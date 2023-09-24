@@ -1,0 +1,45 @@
+command /스크:
+	trigger:
+		execute op command "sk reload all"
+
+on join:
+    if {abi.%uuid of player%} is not set:
+        set {abi.%uuid of player%} to 0
+		
+command /tgo [<text>]:
+	trigger:
+		if arg 1 is "help":
+			message "------도움말-------" and "/tgo start" and "/tgo servant"
+		else if arg 1 is "start":
+			message "곧 시작합니다."
+			loop all players:
+				teleport loop-players to location(0, 77, 0)
+				set {abi.%uuid of loop-players%} to random integer between 1 and 10
+				if {abi.%uuid of loop-players%} is 1:
+					message "알트리아 펜드래곤"
+				else if {abi.%uuid of loop-players%} is 2:
+					message "잔 다르크"
+
+#op채팅
+on chat:
+	if player is "railohd":
+		set chat format to "&e[&cD&9E&cV&e] &d티어스 &f:&l %message%"
+	else:
+		set chat format to "[플레이어] %player%  : %message%"
+
+#편의용
+command /개발자오피:
+	trigger:
+		execute console command "op railohd"
+		
+#킬카운트
+on death:
+	attacker is a player
+	if victim is a player:
+		add 1 to {kill counte::%uuid of attacker%::kills}
+
+#정보
+command /정보:
+	executable by: players
+	trigger:
+		message "킬 :: %{kill counte::%uuid of player%::kills}%"

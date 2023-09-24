@@ -1,0 +1,5 @@
+on join:
+	set join message to "[&4+&f][&eTGO&f]에 %player% 님이 접속하셨습니다."
+
+on quit:
+	set quit message to "[&8-&f][&eTGO&f]에 %player% 님이 퇴장하셨습니다."
