@@ -5,6 +5,22 @@ command /스크:
 on join:
     if {abi.%uuid of player%} is not set:
         set {abi.%uuid of player%} to 0
+
+on join:
+	if {play.%uuid of player%} is not set:
+		set {play.%uuid of player%} to true
+		
+command /게임 [<text>]:
+	trigger:
+		if arg 1 is "참가":
+			set {play.%uuid of player%} to true
+			send "게임에 참가합니다."
+		else if arg 1 is "불참가":
+			set {play.%uuid of player%} to false
+			send "게임에 참가하지않습니다."
+		else:
+			send "/게임 참가"
+			send "/게임 불참가"
 		
 command /tgo [<text>]:
 	trigger:
@@ -13,12 +29,13 @@ command /tgo [<text>]:
 		else if arg 1 is "start":
 			message "곧 시작합니다."
 			loop all players:
-				teleport loop-players to location(0, 77, 0)
-				set {abi.%uuid of loop-players%} to random integer between 1 and 10
-				if {abi.%uuid of loop-players%} is 1:
-					message "알트리아 펜드래곤"
-				else if {abi.%uuid of loop-players%} is 2:
-					message "잔 다르크"
+				if {play.%uuid of loop-player%} is true:
+					teleport loop-players to location(0, 77, 0)
+					set {abi.%uuid of loop-players%} to random integer between 1 and 2
+					if {abi.%uuid of loop-players%} is 1:
+						message "알트리아 펜드래곤"
+					else if {abi.%uuid of loop-players%} is 2:
+						message "잔 다르크"
 
 #op채팅
 on chat:

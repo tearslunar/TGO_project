@@ -1,0 +1,5 @@
+on rightclick:
+	if name of player's tool is "tears":
+		message "스킬 발동"
+		push the player upwards at speed 0.7
+		push the player forwards at speed 2

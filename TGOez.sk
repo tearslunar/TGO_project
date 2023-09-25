@@ -1,0 +1,3 @@
+command /시발:
+	trigger:
+		message "시발"
