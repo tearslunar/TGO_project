@@ -1,7 +1,13 @@
-command /random [<text>] [<text>] [<text>] [<text>]:
+command /random [<number>] [<number>] [<number>] [<number>]:
 	trigger:
 		loop all player
 		if {play.%uuid of player%} is true:
 			set {_X} to random integer between arg 1 and arg 2
 			set {_Z} to random integer between arg 3 and arg 4
 			teleport loop-player to location({_X}, 90, {_Z})
+
+command /타이머 [<number>]:
+	trigger:
+		set {_bar} to new bossbar
+		set title of bossbar {_bar} to "남은 시간 : %arg-1% 초"
+		
