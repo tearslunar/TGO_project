@@ -25,7 +25,7 @@ command /게임 [<text>]:
 command /tgo [<text>]:
 	trigger:
 		if arg 1 is "help":
-			message "------도움말-------" and "/tgo start" and "/tgo servant"
+			message "------도움말-------" and "/tgo start :: 게임 시작" and "/tgo servant :: 자신의 서번트"
 		else if arg 1 is "start":
 			message "곧 시작합니다."
 			loop all players:
