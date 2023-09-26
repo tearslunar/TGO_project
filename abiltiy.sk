@@ -1,5 +1,16 @@
 on rightclick:
 	if name of player's tool is "tears":
-		message "스킬 발동"
-		push the player upwards at speed 0.7
-		push the player forwards at speed 2
+		send "스킬"
+		wait 1 second
+		push the player upwards at speed 3
+		push the player forwards at speed 5
+		wait 0.65 second
+		push the player forwards at speed 4
+		push the player downwards at speed 1
+		set {fall.%player%} to false
+		
+on damage:
+	if {fall.%victim%} is false:
+		if damage cause is fall:
+			cancel event
+			set {fall.%victim%} to true

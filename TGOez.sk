@@ -1,3 +1,15 @@
-command /시발:
+command /random [<number>] [<number>] [<number>] [<number>]:
 	trigger:
-		message "시발"
+		loop all players:
+			if {play.%uuid of player%} is true:
+				set {_X} to random integer between arg 1 and arg 2
+				set {_Z} to random integer between arg 3 and arg 4
+				teleport loop-player to location({_X}, 90, {_Z})
+		if arg 1 is not set:
+			send "/random (X좌표 최솟값) (X좌표 최댓값) (Z좌표 최솟값) (Z좌표 최댓값)"
+		else if arg 2 is not set:
+			send "/random (X좌표 최솟값) (X좌표 최댓값) (Z좌표 최솟값) (Z좌표 최댓값)"
+		else if arg 3 is not set:
+			send "/random (X좌표 최솟값) (X좌표 최댓값) (Z좌표 최솟값) (Z좌표 최댓값)"
+		else if arg 4 is not set:
+			send "/random (X좌표 최솟값) (X좌표 최댓값) (Z좌표 최솟값) (Z좌표 최댓값)"

@@ -36,6 +36,14 @@ command /tgo [<text>]:
 						message "알트리아 펜드래곤"
 					else if {abi.%uuid of loop-players%} is 2:
 						message "잔 다르크"
+		else if arg 1 is "servant":
+			if {abi.%uuid of player%} is 1:
+				send "-----알트리아 펜드래곤-----"
+				send "패시브 : 부숴지지 않는 신념"
+				send "스킬 1 : 도약"
+				send "스킬 2 : 패링(반격)"
+				send "궁극기 : 엑스칼리버 ( 승리가 약속된 검 )"
+
 
 #op채팅
 on chat:
