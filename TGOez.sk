@@ -1,3 +1,7 @@
-command /시발:
+command /random [<text>] [<text>] [<text>] [<text>]:
 	trigger:
-		message "시발"
+		loop all player
+		if {play.%uuid of player%} is true:
+			set {_X} to random integer between arg 1 and arg 2
+			set {_Z} to random integer between arg 3 and arg 4
+			teleport loop-player to location({_X}, 90, {_Z})
